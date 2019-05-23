@@ -15,7 +15,9 @@ public class PlayerMovementScript : MonoBehaviour
 
     public GameObject FirstPersonCamera;
 
-
+    public delegate void Attacked();
+    public static event Attacked OnAttack;
+       
     void Update()
     {
         float moveForward = Input.GetAxis("Vertical") * MovementSpeed * Time.deltaTime;
@@ -50,5 +52,16 @@ public class PlayerMovementScript : MonoBehaviour
         //Rotate player (only horizontaly because we don't want the player character to fall over)
         transform.Rotate(0, rotateHorizontal, 0);
 
+        Attack();
+    }
+
+    public void Attack()
+    {
+        if (Input.GetButton("Attack"))
+        {
+            Debug.Log("Attacked");
+            //If player has a weapon equipped, Attack
+            OnAttack?.Invoke();   
+        }
     }
 }

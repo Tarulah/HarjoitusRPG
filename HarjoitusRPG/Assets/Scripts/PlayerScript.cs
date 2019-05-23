@@ -9,9 +9,12 @@ public class PlayerScript : MonoBehaviour
     public int MaxPlayerMana;
     public int MaxPlayerStamina;
 
-    /// <summary>
-    /// CharacterStats cs
-    /// </summary>
+    [Tooltip("The slot where the equiped game object is as a child")]
+    public GameObject EquippedWeaponSlot;
+
+    [HideInInspector]
+    public GameObject EquippedWeapon;
+
     private CharacterStats cs;
 
     // Start is called before the first frame update

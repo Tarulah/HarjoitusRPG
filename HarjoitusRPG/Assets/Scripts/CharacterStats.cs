@@ -47,10 +47,12 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         HitPoints -= damage;
+        Debug.Log("Damage taken by " + gameObject.name);
 
         if(HitPoints <= 0)
         {
             Debug.Log("You Died!");
+            GameObject.Destroy(gameObject);
         }
     }
 
