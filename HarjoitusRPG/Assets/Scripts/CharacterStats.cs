@@ -52,6 +52,7 @@ public class CharacterStats : MonoBehaviour
         if(HitPoints <= 0)
         {
             Debug.Log("You Died!");
+            QuestManager.questManager.AddQuestItem("Kill the enemy.", 1);
             GameObject.Destroy(gameObject);
         }
     }
