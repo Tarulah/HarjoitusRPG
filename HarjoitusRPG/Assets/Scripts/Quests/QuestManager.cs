@@ -27,6 +27,40 @@ public class QuestManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void QuestRequest(QuestObject questObject)
+    {
+        //AVAILABLE QUESTS
+        if(questObject.availableQuestIDs.Count > 0)
+        {
+            for (int i = 0; i < questList.Count; i++)
+            {
+                for (int j = 0; j < questObject.availableQuestIDs.Count; j++)
+                {
+                    if(questList[i].id == questObject.availableQuestIDs[j] && questList[i].progress == Quest.QuestProgress.AVAILABLE)
+                    {
+                        Debug.Log("Quest ID: " + questObject.availableQuestIDs[j] + " " + questList[i].progress);
+
+                        AcceptQuest(questObject.availableQuestIDs[j]);
+                    }
+                }
+            }
+        }
+
+        //ACTIVE QUESTS
+        for (int i = 0; i < currentQuests.Count; i++)
+        {
+            for (int j = 0; j < questObject.receivableQuestIDs.Count; j++)
+            {
+                if(currentQuests[i].id == questObject.receivableQuestIDs[j] && currentQuests[i].progress == Quest.QuestProgress.ACCEPTED || currentQuests[i].progress == Quest.QuestProgress.COMPLETED)
+                {
+                    Debug.Log("Quest ID: " + questObject.receivableQuestIDs[j] + " is " + currentQuests[i].progress);
+
+                    CompleteQuest(questObject.receivableQuestIDs[j]);
+                }
+            }
+        }
+    }
+
 
     //ACCEPT QUEST
     public  void AcceptQuest(int questID)
@@ -43,7 +77,7 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    //GIVE IP QÙEST
+    //GIVE IP QUEST
     public void GiveUpQuest(int questID)
     {
         for (int i = 0; i < currentQuests.Count; i++)

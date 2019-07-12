@@ -47,7 +47,7 @@ MonoBehaviour:
   - title: First Quest
     id: 1
     progress: 1
-    description: This is my first queast
+    description: This is my first quest
     hint: Kill the enemy
     congratulation: Congrats
     summary: hullo
