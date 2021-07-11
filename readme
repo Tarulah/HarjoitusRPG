@@ -1,0 +1,4 @@
+This is just a small project intended for practising Unity and C# more. It’s intended to be a pretty generic RPG game. It’s still in progress. 
+At the moment there is movement, simple animation, some sort of combat system which is not finished completely yet and one enemy who does nothing at the moment. 
+Quest Manager has already been started and the player can already receive their first quest but it cannot be finished yet. 
+There are also some 3D models added from Unity asset store.
